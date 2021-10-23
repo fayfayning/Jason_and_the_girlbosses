@@ -11,6 +11,9 @@ typing-extensions = "==3.10.0.2"
 Django = "==3.2.8"
 djangorestframework = "*"
 django-cors-headers = "*"
+node = "*"
+npm = "*"
+npx = "*"
 
 [dev-packages]
 

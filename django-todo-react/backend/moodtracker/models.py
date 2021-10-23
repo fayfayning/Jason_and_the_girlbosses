@@ -24,11 +24,7 @@ class moodUpdate(models.Model):
         (OVERWHELMED, "Overwhelmed"),
         (FINE, 'Fine')
     ]
-    mood = models.CharField(
-        max_length = 1,
-        choices = MOOD_CHOICES,
-        default = FINE
-    )
+    mood = models.CharField(max_length = 1, choices = MOOD_CHOICES)
     journal_entry = models.CharField(max_length=1000)
 
     def is_doing_well(self):
@@ -39,6 +35,3 @@ class moodUpdate(models.Model):
     
     def is_struggling(self):
         return self.mood in {self.ANXIOUS, self.OVERWHELMED}
-
-    def mood(self):
-        return self.mood
