@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import {
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Form,
   FormGroup,
   Input,
   Label,
+  Container,
+  Row,
+  Col
 } from "reactstrap";
+import happy from "./Moodlets/Happy_Cat.jpg";
+import sad from "./Moodlets/Sad_Cat.jpg";
+import angry from "./Moodlets/Angry_Cat.jpg";
+import anxious from "./Moodlets/Anxious_Cat.jpg";
 
 export default class CustomModal extends Component {
   constructor(props) {
@@ -31,14 +34,32 @@ export default class CustomModal extends Component {
     this.setState({ activeItem });
   };
 
+
+
   render() {
-    const { toggle, onSave } = this.props;
+    const { onSave } = this.props;
 
     return (
-      <Modal isOpen={true} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Todo Item</ModalHeader>
-        <ModalBody>
-          <Form>
+      <Form>
+        <FormGroup>
+            <Label for='mood-pictures'></Label>
+                <Container>
+                    <Row>
+                        <Col>
+                            <img src={happy} onClick={this.imageClick}/>
+                        </Col>
+                        <Col>
+                            <img src={sad} onClick={this.imageClick}/>
+                        </Col>
+                        <Col>
+                            <img src={angry} onClick={this.imageClick}/>
+                        </Col>
+                        <Col>
+                            <img src={anxious} onClick={this.imageClick}/>
+                        </Col>
+                    </Row>
+                </Container>
+            </FormGroup>
             <FormGroup>
               <Label for="todo-title">Title</Label>
               <Input
@@ -51,7 +72,7 @@ export default class CustomModal extends Component {
               />
             </FormGroup>
             <FormGroup>
-              <Label for="todo-description">Description</Label>
+              <Label for="todo-description">Do you want to add any notes?</Label>
               <Input
                 type="text"
                 id="todo-description"
@@ -61,28 +82,7 @@ export default class CustomModal extends Component {
                 placeholder="Enter Todo description"
               />
             </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="checkbox"
-                  name="completed"
-                  checked={this.state.activeItem.completed}
-                  onChange={this.handleChange}
-                />
-                Completed
-              </Label>
-            </FormGroup>
           </Form>
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            color="success"
-            onClick={() => onSave(this.state.activeItem)}
-          >
-            Save
-          </Button>
-        </ModalFooter>
-      </Modal>
     );
   }
 }

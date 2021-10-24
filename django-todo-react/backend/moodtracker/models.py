@@ -24,6 +24,7 @@ class moodUpdate(models.Model):
         (OVERWHELMED, "Overwhelmed"),
         (FINE, 'Fine')
     ]
+    user_id = models.CharField(max_length=25)
     mood = models.CharField(max_length = 1, choices = MOOD_CHOICES)
     journal_entry = models.CharField(max_length=1000)
 

@@ -23,5 +23,5 @@ router.register(r'moodupdate', views.moodUpdateView, 'moodupdate')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('api/', include(router.urls))
 ]
