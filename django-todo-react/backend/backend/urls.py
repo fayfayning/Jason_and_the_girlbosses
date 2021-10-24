@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from moodtracker import views
+from django.views.generic.base import TemplateView # new
 
 router = routers.DefaultRouter()
 router.register(r'moodupdate', views.moodUpdateView, 'moodupdate')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('api/', include(router.urls)),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

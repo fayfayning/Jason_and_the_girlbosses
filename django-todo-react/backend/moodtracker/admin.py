@@ -10,6 +10,6 @@ kinda like this for each:
 """
 
 class moodUpdateAdmin(admin.ModelAdmin):
-    list_display = ('mood', 'journal_entry')
+    list_display = ('uploaded_by', 'mood', 'journal_entry')
 
 admin.site.register(moodUpdate, moodUpdateAdmin)

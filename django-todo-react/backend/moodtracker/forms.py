@@ -1,7 +1,14 @@
 from django import forms
-from . import models
+from .models import moodUpdate
 
 class moodUpdateForm(forms.ModelForm):
+
+    """"
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super(moodUpdateForm, self).__init__(*args, **kwargs)
+    """
+
     HAPPY = 'H'
     SAD = 'S'
     ANGRY = 'A'
@@ -21,11 +28,11 @@ class moodUpdateForm(forms.ModelForm):
         (FINE, 'Fine')
     ]
     mood = forms.ChoiceField(
-        max_length = 1,
+        #max_length = 1,
         choices = MOOD_CHOICES,
-        default = FINE
+        #default = FINE
     )
     message = forms.CharField(widget=forms.Textarea)
     class Meta:
         model = moodUpdate
-        fields = ['mood', 'journal_entry']
+        fields = ['uploaded_by', 'mood', 'journal_entry']

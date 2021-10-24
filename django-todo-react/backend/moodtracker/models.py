@@ -6,6 +6,13 @@ from django.db import models
 # in here and in Django model form
 
 class moodUpdate(models.Model):
+    uploaded_by = models.ForeignKey('auth.User',default=1,related_name='uploads',on_delete=models.CASCADE,)
+    #current_user = models.CharField(max_length=150)
+    """"
+    def get_object(self):
+        return self.request.user
+    """
+
     HAPPY = 'H'
     SAD = 'S'
     ANGRY = 'A'
