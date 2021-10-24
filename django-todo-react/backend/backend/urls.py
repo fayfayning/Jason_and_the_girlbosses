@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from moodtracker import views
+from moodtracker import views as mood_views
+from users import views as user_views
 
-router = routers.DefaultRouter()
-router.register(r'moodupdate', views.moodUpdateView, 'moodupdate')
+router_mood = routers.DefaultRouter()
+router_mood.register(r'moodupdate', mood_views.moodUpdateView, 'moodupdate')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('signin', user_views.register_request, name="try_sign"),
+    path('api/', include(router_mood.urls)),
 ]
